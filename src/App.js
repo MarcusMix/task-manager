@@ -1,15 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import TaskItem from './components/TaskItem';
 
 function App() {
+ 
+  const [tarefas, setTarefas] = useState([
+    {
+      id: '1',
+      descricao: "Estudar programação",
+      feita: false
+    },
+    {
+      id: '2',
+      descricao: "Estudar Inglês",
+      feita: true
+    },
+]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Oi</h1>
-      </header>
-    </div>
-  );
+    <>
+      {tarefas.map(tarefa => <TaskItem propriedade={tarefa} key={tarefa.id}/>)}
+    </>
+  )
 }
 
 export default App;

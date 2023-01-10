@@ -1,7 +1,8 @@
-const  TaskItem = ({propriedade}) => {
+function TaskItem({propriedade}) {
     return (
         <>
-        <h1>{`Tarefa: ${propriedade.descricao} feita? ${propriedade.feita ? "sim" : "não"}`}</h1>
+            <h1>{propriedade.tarefa}</h1>
+            <h1>{propriedade.id}</h1>
         </>
     )
 }

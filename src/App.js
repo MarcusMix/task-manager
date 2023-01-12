@@ -21,7 +21,7 @@ function App() {
   const fetchTasks = async () => {
     try {
       const {data} = await axios.get("https://fsc-taskmanager-api.up.railway.app/tasks")
-      setTasks(data)
+      // setTasks(data)
     } catch (error) {
       console.log(error)
     }

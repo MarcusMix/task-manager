@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
-import axios from 'axios'
+
+// API
+import api from "../../services/api";
 
 // Style
 import './Tasks.scss'
@@ -10,7 +12,7 @@ function Tasks () {
     
       const fetchTasks = async () => {
         try {
-          const {data} = await axios.get("https://fsc-taskmanager-api.up.railway.app/tasks")
+          const {data} = await api.get('/tasks')
           setTasks(data)
         } catch (error) {
           console.log(error)

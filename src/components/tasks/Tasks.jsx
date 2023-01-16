@@ -4,46 +4,45 @@ import { useState, useEffect } from "react"
 import api from "../../services/api";
 
 // Style
-import './Tasks.scss'
+import { CompletedTasks, LastTasks, TaskFont, TaskList, TasksContainer } from './Tasks.styles'
 
-function Tasks () {
+function Tasks() {
 
-    const [tasks, setTasks] = useState([]);
-    
-      const fetchTasks = async () => {
-        try {
-          const {data} = await api.get('/tasks')
-          setTasks(data)
-        } catch (error) {
-          console.log(error)
-        }
-      }
-    
-      useEffect(() => {
-        fetchTasks()
-      }, [])
-    
+  const [tasks, setTasks] = useState([]);
 
-    return (  
+  const fetchTasks = async () => {
+    try {
+      const { data } = await api.get('/tasks')
+      setTasks(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-        <div className="tasks-container">
-            <h3>Últimas tarefas</h3>
+  useEffect(() => {
+    fetchTasks()
+  }, [])
 
-            <div className="last-tasks">
-                <div className="tasks-list">
-                    {tasks.filter(tarefas => tarefas.isCompleted === false).map(ultimaTarefa => <p>{ultimaTarefa.description}</p>)}
-                </div>
-            </div>
 
-            <h3>Tarefas realizadas</h3>
+  return (
 
-            <div className="completed-tasks">
-                {tasks.filter(tarefas => tarefas.isCompleted).map(tarefaConcluida => <p>{tarefaConcluida.description}</p>)}
-            </div>
+    <TasksContainer>
+      <TaskFont>Últimas Tarefas</TaskFont>
 
-        </div>
+      <LastTasks>
+          <TaskList>
+            {tasks.filter(tarefas => tarefas.isCompleted === false).map(ultimaTarefa => <p>{ultimaTarefa.description}</p>)}
+          </TaskList>
+      </LastTasks>
+     
 
-    );
+      <TaskFont>Tarefas Realizadas</TaskFont>
+
+      <CompletedTasks>
+        {tasks.filter(tarefas => tarefas.isCompleted).map(tarefaConcluida => <p>{tarefaConcluida.description}</p>)}
+      </CompletedTasks>
+    </TasksContainer>
+  );
 }
 
 export default Tasks;

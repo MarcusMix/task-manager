@@ -1,9 +1,24 @@
-function TaskItem({propriedade}) {
+import './TaskItem.scss';
+
+function TaskItem({ propriedade }) {
     return (
-        <>
-            <h1>{propriedade.tarefa}</h1>
-            <h1>{propriedade.id}</h1>
-        </>
+        <div className="task-item-container">
+            <div className="task-description">
+                <label className={propriedade.isCompleted ?
+                    'checkbox-container-completed' :
+                    'checkbox-container'}>
+
+                    {propriedade.description}
+                    <input type="checkbox"
+                        defaultChecked={propriedade.isCompleted}
+                    />
+                    <span className={propriedade.isCompleted ?
+                        'checkmark completed' :
+                        'checkmark'}>
+                    </span>
+                </label>
+            </div>
+        </div>
     )
 }
 

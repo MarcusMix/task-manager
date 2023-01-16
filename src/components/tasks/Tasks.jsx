@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
 
+import TaskItem from '../task-item/TaskItem'
+
+
 // API
 import api from "../../services/api";
 
 // Style
 import { CompletedTasks, LastTasks, TaskFont, TaskList, TasksContainer } from './Tasks.styles'
+
 
 function Tasks() {
 
@@ -31,7 +35,7 @@ function Tasks() {
 
       <LastTasks>
           <TaskList>
-            {tasks.filter(tarefas => tarefas.isCompleted === false).map(ultimaTarefa => <p>{ultimaTarefa.description}</p>)}
+            {tasks.filter(tarefas => tarefas.isCompleted === false).map(ultimaTarefa => <TaskItem task={ultimaTarefa}/>)}
           </TaskList>
       </LastTasks>
      
@@ -39,7 +43,7 @@ function Tasks() {
       <TaskFont>Tarefas Realizadas</TaskFont>
 
       <CompletedTasks>
-        {tasks.filter(tarefas => tarefas.isCompleted).map(tarefaConcluida => <p>{tarefaConcluida.description}</p>)}
+        {tasks.filter(tarefas => tarefas.isCompleted).map(tarefaConcluida => <TaskItem task={tarefaConcluida}/>)}
       </CompletedTasks>
     </TasksContainer>
   );
@@ -47,4 +51,3 @@ function Tasks() {
 
 export default Tasks;
 
-// {tasks.map(tarefas => <TaskItem propriedade={tarefas} key={tarefas.id}/>)}     

@@ -1,4 +1,4 @@
-import './TaskItem.scss';
+import './TaskItem.js';
 
 function TaskItem({ propriedade }) {
     return (

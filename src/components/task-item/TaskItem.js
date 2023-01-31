@@ -1,4 +1,6 @@
-.task-item-container {
+import styled from 'styled-components'
+
+export const TaskItemContainer = styled.div `
     display: flex;
     justify-content: space-between;
     max-width: 50%;
@@ -15,10 +17,11 @@
             cursor: pointer;
         }
     }
-}
+
+`
 
 /* Customize the label (the container) */
-.checkbox-container {
+export const CheckboxContainer = styled.div `
     display: block;
     position: relative;
     padding-left: 30px;
@@ -30,7 +33,8 @@
     -ms-user-select: none;
     user-select: none;
     padding-top: 1.5px;
-}
+` 
+
 
 .checkbox-container-completed {
     @extend .checkbox-container;
